@@ -4,19 +4,20 @@ CREATE DATABASE meeting_room_bookings_dev;
 \c meeting_room_bookings_dev;
 
 CREATE TABLE meeting_rooms (
-    id SERIAL PRIMARY KEY,
+    room_id SERIAL PRIMARY KEY,
     room_name TEXT NOT NULL,
     capacity INT NOT NULL,
     floor INT NOT NULL,
-    available_date DATE,
-    available_start TIME,
-    available_end TIME
+    available BOOLEAN
 );
 
 CREATE TABLE booked (
-    id SERIAL PRIMARY KEY,
+    meeting_id SERIAL PRIMARY KEY,
+    meeting_room TEXT NOT NULL,
     meeting_name TEXT NOT NULL,
-    booked_date DATE,
+    start_date DATE,
+    end_date DATE,
     start_meeting TIME,
-    end_meeting TIME
+    end_meeting TIME,
+    floor INT
 );

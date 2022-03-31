@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Meeting Room Booking App");
 });
 
-app.use("/meetingRooms", meetingRoomController);
+app.use("/meeting-rooms", meetingRoomController);
 
 app.use("/bookings", bookingController);
 
