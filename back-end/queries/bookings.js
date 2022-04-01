@@ -11,4 +11,17 @@ const getAllBookings = async () => {
   }
 };
 
-module.exports = { getAllBookings };
+// SHOW
+const getOneBooking = async (meeting_id) => {
+  try {
+    const oneBooking = db.one(
+      "SELECT * FROM bookings WHERE meeting_id=$1",
+      meeting_id
+    );
+    return oneBooking;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { getAllBookings, getOneBooking };

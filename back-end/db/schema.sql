@@ -11,7 +11,7 @@ CREATE TABLE meeting_rooms (
     available BOOLEAN
 );
 
-CREATE TABLE booked (
+CREATE TABLE bookings (
     meeting_id SERIAL PRIMARY KEY,
     room_name TEXT NOT NULL,
     meeting_name TEXT NOT NULL,
