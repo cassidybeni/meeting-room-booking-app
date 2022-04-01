@@ -28,16 +28,16 @@ const getOneBooking = async (meeting_id) => {
 const createBooking = async (booking) => {
   try {
     const newBooking = await db.one(
-      "INSERT INTO bookings (meeting_id, room_name, meeting_name, start_date, end_date, start_time, end_time, floor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      "INSERT INTO bookings (meeting_id, room_id, meeting_name, start_date, end_date, start_time, end_time, attendees) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
       [
         booking.meeting_id,
-        booking.room_name,
+        booking.room_id,
         booking.meeting_name,
         booking.start_date,
         booking.end_date,
         booking.start_time,
         booking.end_time,
-        booking.floor,
+        booking.attendees,
       ]
     );
     return newBooking;
@@ -62,15 +62,15 @@ const deleteBooking = async (meeting_id) => {
 const updateBooking = async (meeting_id, booking) => {
   try {
     const updatedBooking = await db.one(
-      "UPDATE bookings SET room_name=$1, meeting_name=$2, start_date=$3, end_date=$4, start_time=$5, end_time=$6, floor=$7 WHERE meeting_id=$8 RETURNING *",
+      "UPDATE bookings SET room_id=$1, meeting_name=$2, start_date=$3, end_date=$4, start_time=$5, end_time=$6, attendees=$7 WHERE meeting_id=$8 RETURNING *",
       [
-        booking.room_name,
+        booking.room_id,
         booking.meeting_name,
         booking.start_date,
         booking.end_date,
         booking.start_time,
         booking.end_time,
-        booking.floor,
+        booking.attendees,
         meeting_id,
       ]
     );
