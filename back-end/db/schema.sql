@@ -13,7 +13,7 @@ CREATE TABLE meeting_rooms (
 
 CREATE TABLE booked (
     meeting_id SERIAL PRIMARY KEY,
-    meeting_room TEXT NOT NULL,
+    room_name TEXT NOT NULL,
     meeting_name TEXT NOT NULL,
     start_date DATE,
     end_date DATE,
