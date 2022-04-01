@@ -1,6 +1,10 @@
 const express = require("express");
 const rooms = express.Router();
-const { getAllRooms, getOneRoom } = require("../queries/meetingRooms.js");
+const {
+  getAllRooms,
+  getOneRoom,
+  createRoom,
+} = require("../queries/meetingRooms.js");
 
 rooms.get("/", async (req, res) => {
   const allRooms = await getAllRooms();
@@ -18,6 +22,15 @@ rooms.get("/:room_id", async (req, res) => {
     res.status(200).json(oneRoom);
   } else {
     res.status(404).json({ error: "Room Unavailable" });
+  }
+});
+
+rooms.post("/", async (req, res) => {
+  const newRoom = await createRoom(req.body);
+  if (newRoom) {
+    res.status(200).json(newRoom);
+  } else {
+    res.status(400).json({ error: error });
   }
 });
 
