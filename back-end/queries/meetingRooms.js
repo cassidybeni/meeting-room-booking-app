@@ -14,7 +14,10 @@ const getAllRooms = async () => {
 // SHOW
 const getOneRoom = async (room_id) => {
   try {
-    const oneRoom = db.one("SELECT * FROM meeting_rooms WHERE room_id=$1", room_id);
+    const oneRoom = db.one(
+      "SELECT * FROM meeting_rooms WHERE room_id=$1",
+      room_id
+    );
     return oneRoom;
   } catch (error) {
     return error;
@@ -37,5 +40,5 @@ const createRoom = async (room) => {
 module.exports = {
   getAllRooms,
   getOneRoom,
-  createRoom
+  createRoom,
 };
