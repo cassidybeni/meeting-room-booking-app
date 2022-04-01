@@ -4,7 +4,9 @@ const {
   getAllRooms,
   getOneRoom,
   createRoom,
+  getBookings,
 } = require("../queries/meetingRooms.js");
+const db = require("../db/dbConfig");
 
 rooms.get("/", async (req, res) => {
   const allRooms = await getAllRooms();
@@ -31,6 +33,18 @@ rooms.post("/", async (req, res) => {
     res.status(200).json(newRoom);
   } else {
     res.status(400).json({ error: error });
+  }
+});
+
+rooms.get("/:room_id/bookings", async (req, res) => {
+  const { room_id, meeting_id } = req.params;
+  try {
+    const meetingsBooked = await getBookings(room_id, meeting_id);
+    if (meetingsBooked[0]) {
+      res.status(200).json(meetingsBooked);
+    }
+  } catch (error) {
+    res.status(500).json({ error: error });
   }
 });
 

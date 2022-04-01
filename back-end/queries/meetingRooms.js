@@ -37,8 +37,21 @@ const createRoom = async (room) => {
   }
 };
 
+const getBookings = async (room_id) => {
+  try {
+    const allBookings = db.any(
+      "SELECT * FROM bookings WHERE room_id=$1",
+      room_id
+    );
+    return allBookings;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllRooms,
   getOneRoom,
   createRoom,
+  getBookings,
 };
