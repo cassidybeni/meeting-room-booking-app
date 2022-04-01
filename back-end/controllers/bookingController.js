@@ -4,6 +4,7 @@ const {
   getAllBookings,
   getOneBooking,
   createBooking,
+  deleteBooking,
 } = require("../queries/bookings");
 
 bookings.get("/", async (req, res) => {
@@ -33,6 +34,16 @@ bookings.post("/", async (req, res) => {
     if (newBooking) {
       res.status(200).json(newBooking);
     }
+  } catch (error) {
+    res.status(400).json({ error: error });
+  }
+});
+
+bookings.delete("/:meeting_id", async (req, res) => {
+  const { meeting_id } = req.params;
+  try {
+    const deletedBooking = await deleteBooking(meeting_id);
+    res.status(200).json(deletedBooking);
   } catch (error) {
     res.status(400).json({ error: error });
   }

@@ -46,4 +46,22 @@ const createBooking = async (booking) => {
   }
 };
 
-module.exports = { getAllBookings, getOneBooking, createBooking };
+// DELETE
+const deleteBooking = async (meeting_id) => {
+  try {
+    const deletedBooking = await db.one(
+      "DELETE FROM bookings WHERE meeting_id=$1 RETURNING *;",
+      meeting_id
+    );
+    return deletedBooking;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = {
+  getAllBookings,
+  getOneBooking,
+  createBooking,
+  deleteBooking,
+};
