@@ -12,12 +12,11 @@ CREATE TABLE meeting_rooms (
 );
 
 CREATE TABLE bookings (
-    meeting_id SERIAL PRIMARY KEY,
-    room_name TEXT NOT NULL,
+    room_id SERIAL PRIMARY KEY,
     meeting_name TEXT NOT NULL,
-    start_date DATE,
-    end_date DATE,
-    start_time TIME,
-    end_time TIME,
-    floor INT
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    attendees TEXT
 );
