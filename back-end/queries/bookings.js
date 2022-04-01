@@ -59,9 +59,31 @@ const deleteBooking = async (meeting_id) => {
   }
 };
 
+const updateBooking = async (meeting_id, booking) => {
+  try {
+    const updatedBooking = await db.one(
+      "UPDATE bookings SET room_name=$1, meeting_name=$2, start_date=$3, end_date=$4, start_time=$5, end_time=$6, floor=$7 WHERE meeting_id=$8 RETURNING *",
+      [
+        booking.room_name,
+        booking.meeting_name,
+        booking.start_date,
+        booking.end_date,
+        booking.start_time,
+        booking.end_time,
+        booking.floor,
+        meeting_id,
+      ]
+    );
+    return updatedBooking;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllBookings,
   getOneBooking,
   createBooking,
   deleteBooking,
+  updateBooking,
 };

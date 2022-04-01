@@ -5,6 +5,7 @@ const {
   getOneBooking,
   createBooking,
   deleteBooking,
+  updateBooking,
 } = require("../queries/bookings");
 
 bookings.get("/", async (req, res) => {
@@ -18,32 +19,41 @@ bookings.get("/", async (req, res) => {
 
 bookings.get("/:meeting_id", async (req, res) => {
   const { meeting_id } = req.params;
-  try {
-    const oneBooking = await getOneBooking(meeting_id);
-    if (oneBooking) {
-      res.status(200).json(oneBooking);
-    }
-  } catch (error) {
+  const oneBooking = await getOneBooking(meeting_id);
+  if (oneBooking) {
+    res.status(200).json(oneBooking);
+  } else {
     res.status(404).json({ error: "Appointment not found." });
   }
 });
 
 bookings.post("/", async (req, res) => {
-  try {
-    const newBooking = await createBooking(req.body);
-    if (newBooking) {
-      res.status(200).json(newBooking);
-    }
-  } catch (error) {
+  const newBooking = await createBooking(req.body);
+  if (newBooking) {
+    res.status(200).json(newBooking);
+  } else {
     res.status(400).json({ error: error });
   }
 });
 
 bookings.delete("/:meeting_id", async (req, res) => {
   const { meeting_id } = req.params;
-  try {
-    const deletedBooking = await deleteBooking(meeting_id);
+  const deletedBooking = await deleteBooking(meeting_id);
+  if (deletedBooking) {
     res.status(200).json(deletedBooking);
+  } else {
+    res.status(400).json({ error: error });
+  }
+});
+
+bookings.put("/:meeting_id", async (req, res) => {
+  const { meeting_id } = req.params;
+  const booking = req.body;
+  try {
+    const updatedBooking = await updateBooking(meeting_id, booking);
+    if (updatedBooking.meeting_id) {
+      res.status(200).json(updatedBooking);
+    }
   } catch (error) {
     res.status(400).json({ error: error });
   }
