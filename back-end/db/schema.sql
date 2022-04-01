@@ -17,7 +17,7 @@ CREATE TABLE bookings (
     meeting_name TEXT NOT NULL,
     start_date DATE,
     end_date DATE,
-    start_meeting TIME,
-    end_meeting TIME,
+    start_time TIME,
+    end_time TIME,
     floor INT
 );

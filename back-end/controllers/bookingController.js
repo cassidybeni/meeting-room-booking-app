@@ -1,6 +1,10 @@
 const express = require("express");
 const bookings = express.Router();
-const { getAllBookings, getOneBooking } = require("../queries/bookings");
+const {
+  getAllBookings,
+  getOneBooking,
+  createBooking,
+} = require("../queries/bookings");
 
 bookings.get("/", async (req, res) => {
   const allBookings = await getAllBookings();
@@ -20,6 +24,17 @@ bookings.get("/:meeting_id", async (req, res) => {
     }
   } catch (error) {
     res.status(404).json({ error: "Appointment not found." });
+  }
+});
+
+bookings.post("/", async (req, res) => {
+  try {
+    const newBooking = await createBooking(req.body);
+    if (newBooking) {
+      res.status(200).json(newBooking);
+    }
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 });
 
