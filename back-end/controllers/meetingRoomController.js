@@ -6,7 +6,6 @@ const {
   createRoom,
   getBookings,
 } = require("../queries/meetingRooms.js");
-const db = require("../db/dbConfig");
 
 rooms.get("/", async (req, res) => {
   const allRooms = await getAllRooms();
