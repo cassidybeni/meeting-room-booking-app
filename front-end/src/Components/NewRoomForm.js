@@ -1,30 +1,29 @@
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { apiURL } from "../util/apiURL.js";
+import { apiURL } from "../util/apiURL";
+
 const API = apiURL();
 
-function NewRoomForm() {
-  let history = useNavigate();
+function NewRoomForm(props) {
+  const [room, setRoom] = useState({
+    room_name: "",
+    capacity: 0,
+    floor: 0,
+  });
+  const history = useNavigate();
 
   const addRoom = (newRoom) => {
     axios
       .post(`${API}/meeting-rooms`, newRoom)
       .then(
         () => {
-          history.push(`/meeting-rooms`);
+          history("/");
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn("catch", c));
+      .catch((e) => console.warn("catch", e));
   };
-
-  const [room, setRoom] = useState({
-    room_name: "",
-    capacity: 0,
-    floor: 0,
-    available: false,
-  });
 
   const handleTextChange = (e) => {
     setRoom({ ...room, [e.target.id]: e.target.value });

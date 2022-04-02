@@ -7,26 +7,8 @@ import NewRoom from "./Pages/NewRoom";
 import SingleBooking from "./Pages/SingleBooking";
 import SingleRoom from "./Pages/SingleRoom";
 import FourOhFour from "./Pages/FourOhFour";
-import axios from "axios";
-import { apiURL } from "./util/apiURL";
-import { useEffect, useState } from "react";
-
-const API = apiURL();
 
 function App() {
-  const [bookings, setBookings] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${API}/bookings`)
-      .then((res) => {
-        setBookings(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <div className="App">
       <Router>
@@ -35,7 +17,10 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/bookings" element={<Bookings />} />
-            <Route path="/meetingrooms/new" element={<NewRoom />} />
+            <Route
+              path="/meetingrooms/new"
+              element={<NewRoom />}
+            />
             <Route
               exact
               path="/meetingrooms/:room_id"

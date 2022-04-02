@@ -1,0 +1,13 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+a:link, a:visited {
+   background-color: rgb(0, 0, 0);
+   font-size: 20px;
+   font-family: sans-serif;
+   text-decoration: none;
+   font-weight: bold;
+   color: white;
+}
