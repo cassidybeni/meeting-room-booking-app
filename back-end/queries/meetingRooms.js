@@ -28,8 +28,8 @@ const getOneRoom = async (room_id) => {
 const createRoom = async (room) => {
   try {
     const newRoom = await db.one(
-      "INSERT INTO meeting_rooms (room_id, room_name, capacity, floor, available) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [room.room_id, room.room_name, room.capacity, room.floor, room.available]
+      "INSERT INTO meeting_rooms (room_id, room_name, capacity, floor) VALUES ($1, $2, $3, $4) RETURNING *",
+      [room.room_id, room.room_name, room.capacity, room.floor]
     );
     return newRoom;
   } catch (error) {

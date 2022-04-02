@@ -7,8 +7,7 @@ CREATE TABLE meeting_rooms (
     room_id SERIAL PRIMARY KEY,
     room_name VARCHAR(255) NOT NULL,
     capacity INT NOT NULL,
-    floor INT NOT NULL,
-    available BOOLEAN NOT NULL DEFAULT FALSE
+    floor INT NOT NULL
 );
 
 CREATE TABLE bookings (
