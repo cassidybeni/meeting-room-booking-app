@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import BookingDetails from "../Components/BookingDetails";
 
 function SingleBooking() {
   return (
-    <div>SingleBooking</div>
-  )
+    <div>
+      <BookingDetails />
+    </div>
+  );
 }
 
-export default SingleBooking
+export default SingleBooking;
