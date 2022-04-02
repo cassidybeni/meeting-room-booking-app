@@ -1,8 +1,11 @@
 import React from 'react'
+import MeetingRooms from '../Components/MeetingRooms'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <MeetingRooms />
+    </div>
   )
 }
 
