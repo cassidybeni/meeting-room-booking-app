@@ -1,2 +1,9 @@
-const API = process.env.REACT_APP_API_URL;
-console.log(API)
+import React from 'react'
+
+function MeetingRooms() {
+  return (
+    <div>MeetingRooms</div>
+  )
+}
+
+export default MeetingRooms
