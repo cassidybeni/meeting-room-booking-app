@@ -14,7 +14,7 @@ function RoomBookings() {
 
   useEffect(() => {
     axios
-      .get(`${API}/meeting-rooms/${room_id}/bookings}`)
+      .get(`${API}/meeting-rooms/${room_id}/bookings`)
       .then(
         (res) => {
           setBooked(res.data);
