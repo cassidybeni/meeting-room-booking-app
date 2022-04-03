@@ -7,12 +7,12 @@ function Booking({ booking }) {
       <Link to={`/bookings/${booking.meeting_id}`}>
         <h1>{booking.meeting_name}</h1>
       </Link>
-      <p>
-        {booking.start_date} {booking.start_time}
-      </p>
-      <p>
-        {booking.end_date} {booking.end_time}
-      </p>
+      <h2>
+        Start: {booking.start_date} {booking.start_time}
+      </h2>
+      <h2>
+        End: {booking.end_date} {booking.end_time}
+      </h2>
     </div>
   );
 }

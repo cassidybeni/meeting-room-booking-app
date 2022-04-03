@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../util/apiURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const API = apiURL();
 
@@ -29,14 +31,18 @@ function BookingDetails() {
       history("/bookings");
       setBooking(res.data);
     } catch (error) {
-      console.error(error);
+      toast.warning("Cancellation Unsuccessful", { autoClose: false });
     }
   };
+
+  //todo: pop up after deletion
+  toast.success("Cancellation Successful", { autoClose: false });
 
   return (
     <div>
       <h1>{booking.meeting_name}</h1>
       <button onClick={handleDelete}>Cancel Meeting</button>
+      <ToastContainer />
     </div>
   );
 }
