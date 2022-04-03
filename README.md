@@ -12,4 +12,4 @@
 7. cd into frontend
 8. Run npm start in terminal
 
-[API](https://hidden-waters-94387.herokuapp.com)
+[API](https://safe-citadel-01212.herokuapp.com/)
