@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { apiURL } from "../util/apiURL";
-import Room from "../Components/Room";
+import RoomBooking from "./RoomBooking.js";
 import { useParams } from "react-router-dom";
 
 const API = apiURL();
@@ -26,11 +26,12 @@ function RoomBookings() {
       .catch((e) => {
         console.log("caught", e);
       });
-  }, []);
+  }, [room_id]);
+
   return (
     <div>
       {booked.map((meeting) => {
-        return <Room key={meeting.meeting_id} meeting={meeting} />;
+        return <RoomBooking key={meeting.meeting_id} meeting={meeting} />;
       })}
     </div>
   );

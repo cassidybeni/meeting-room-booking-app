@@ -100,7 +100,6 @@ function NewBookingForm() {
         <input
           id="attendees"
           type="text"
-          required
           placeholder="Attendees"
           value={newBooking.attendees}
           onChange={handleChange}

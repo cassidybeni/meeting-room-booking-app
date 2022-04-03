@@ -5,7 +5,7 @@ function Booking({ booking }) {
   return (
     <div>
       <Link to={`/bookings/${booking.meeting_id}`}>
-        <h1>{booking.meeting_name}</h1>
+        <h1>Meeting Name: {booking.meeting_name}</h1>
       </Link>
       <h2>
         Start: {Date(booking.start_date)} {booking.start_time}
