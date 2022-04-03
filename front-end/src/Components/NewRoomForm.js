@@ -9,7 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 const API = apiURL();
 
 function NewRoomForm(props) {
-  const [room, setRoom] = useState({
+  const [newRoom, setRoom] = useState({
+    room_id: 0,
     room_name: "",
     capacity: 0,
     floor: 0,
@@ -17,31 +18,30 @@ function NewRoomForm(props) {
   const history = useNavigate();
 
   const addRoom = (newRoom) => {
-    axios
-      .post(`${API}/meeting-rooms`, newRoom)
-      .then(
-        () => {
-          history("/");
+    try {
+      axios.post(`${API}/meeting-rooms`, newRoom).then(
+        (res) => {
+          setRoom(res.data);
+          history(`/`);
         },
         (error) => console.error(error)
-      )
-      .catch((e) => console.warn("catch", e));
+      );
+    } catch (error) {
+      toast.warning("Room cannot be created", { autoClose: false });
+    }
   };
 
   const handleTextChange = (e) => {
-    setRoom({ ...room, [e.target.id]: e.target.value });
+    setRoom({ ...newRoom, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addRoom(room);
+    addRoom(newRoom);
   };
 
   //todo: pops up after successful submission
   toast.success("Room Successfully Created", { autoClose: false });
-
-  //todo: pops up after unsuccessful submission
-  // toast.warning("Room cannot be created", { autoClose: false });
 
   return (
     <div className="NewRoomForm">
@@ -51,7 +51,7 @@ function NewRoomForm(props) {
           id="room_name"
           type="text"
           required
-          value={room.room_name}
+          value={newRoom.room_name}
           placeholder="Room Name"
           onChange={handleTextChange}
         />
@@ -60,7 +60,7 @@ function NewRoomForm(props) {
           id="floor"
           type="number"
           required
-          value={room.floor}
+          value={newRoom.floor}
           placeholder="Floor"
           onChange={handleTextChange}
         />
@@ -69,7 +69,7 @@ function NewRoomForm(props) {
           id="capacity"
           type="number"
           required
-          value={room.capacity}
+          value={newRoom.capacity}
           placeholder="Capacity"
           onChange={handleTextChange}
         />
