@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS meeting_room_bookings_dev;
-CREATE DATABASE meeting_room_bookings_dev;
+DROP DATABASE IF EXISTS da7jia088pr7vc;
+CREATE DATABASE da7jia088pr7vc;
 
 \c da7jia088pr7vc;
 
