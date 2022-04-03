@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
 import "./NewRoomForm.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const API = apiURL();
 
@@ -34,6 +36,12 @@ function NewRoomForm(props) {
     e.preventDefault();
     addRoom(room);
   };
+
+  //todo: pops up after successful submission
+  toast.success("Room Successfully Created", { autoClose: false });
+
+  //todo: pops up after unsuccessful submission
+  // toast.warning("Room cannot be created", { autoClose: false });
 
   return (
     <div className="NewRoomForm">
@@ -67,6 +75,7 @@ function NewRoomForm(props) {
         />
         <input type="submit" />
       </form>
+      <ToastContainer />
     </div>
   );
 }

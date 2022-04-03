@@ -17,10 +17,10 @@ function RoomBookings() {
       .get(`${API}/meeting-rooms/${room_id}/bookings}`)
       .then(
         (res) => {
-            setBooked(res.data);
+          setBooked(res.data);
         },
         (e) => {
-            console.log("axios error", e);
+          console.log("axios error", e);
         }
       )
       .catch((e) => {

@@ -11,9 +11,7 @@ function Room({ room, meeting }) {
         <p>Capacity: {room.capacity}</p>
         <p>Floor: {room.floor}</p>
       </div>
-      <div>
-        {/* <h1>{meeting.meeting_name}</h1> */}
-      </div>
+      <div>{/* <h1>{meeting.meeting_name}</h1> */}</div>
     </div>
   );
 }
