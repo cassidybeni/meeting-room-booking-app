@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { apiURL } from "../util/apiURL";
+import "./NewRoomForm.css";
 
 const API = apiURL();
 
@@ -35,7 +36,7 @@ function NewRoomForm(props) {
   };
 
   return (
-    <div>
+    <div className="NewRoomForm">
       <form onSubmit={handleSubmit}>
         <label>Room Name:</label>
         <input

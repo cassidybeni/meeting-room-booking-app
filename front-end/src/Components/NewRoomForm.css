@@ -1,0 +1,43 @@
+form{
+    display: inline-block;
+    width: 150px;
+    font-family: sans-serif;
+    padding-top: 100px;
+}
+
+.NewRoomForm{
+   position: relative;
+   right: 70px;
+}
+
+h1 {
+    padding-top: 100px;
+}
+
+label{
+    display: flex;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+}
+
+input[type=submit] {
+    display: block;
+    position: relative;
+    left: 600px;
+    float: right;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type=text], input[type=number]{
+    display: block;
+    width: 300px;
+    text-align: center;
+}
+
