@@ -11,3 +11,5 @@
     psql -U postgres -f db/seed.sql
 7. cd into frontend
 8. Run npm start in terminal
+
+[API](https://hidden-waters-94387.herokuapp.com)
