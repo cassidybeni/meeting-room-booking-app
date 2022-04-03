@@ -4,6 +4,7 @@ import axios from "axios";
 import { apiURL } from "../util/apiURL";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../Components/BookingDetails.css";
 
 const API = apiURL();
 
@@ -41,6 +42,10 @@ function BookingDetails() {
   return (
     <div>
       <h1>{booking.meeting_name}</h1>
+      <h2>{booking.start_date}</h2>
+      <h2>{booking.start_time}</h2>
+      <h2>{booking.end_date}</h2>
+      <h2>{booking.end_time}</h2>
       <button onClick={handleDelete}>Cancel Meeting</button>
       <ToastContainer />
     </div>

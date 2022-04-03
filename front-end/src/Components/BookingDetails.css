@@ -1,0 +1,10 @@
+button {
+    display: block;
+    position: relative;
+    left: 650px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}

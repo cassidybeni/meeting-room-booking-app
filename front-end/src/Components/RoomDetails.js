@@ -26,8 +26,8 @@ function RoomDetails() {
   return (
     <div>
       <h1>{room.room_name}</h1>
-      <p>Capacity: {room.capacity}</p>
-      <p>Floor: {room.floor}</p>
+      <h2>Capacity: {room.capacity}</h2>
+      <h2>Floor: {room.floor}</h2>
     </div>
   );
 }

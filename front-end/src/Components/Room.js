@@ -8,8 +8,8 @@ function Room({ room, meeting }) {
         <Link to={`/meetingrooms/${room.room_id}`}>
           <h1>Room Name: {room.room_name}</h1>
         </Link>
-        <p>Capacity: {room.capacity}</p>
-        <p>Floor: {room.floor}</p>
+        <h2>Capacity: {room.capacity}</h2>
+        <h2>Floor: {room.floor}</h2>
       </div>
       <div>{/* <h1>{meeting.meeting_name}</h1> */}</div>
     </div>
