@@ -8,14 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const API = apiURL();
 
-function NewRoomForm(props) {
+function NewRoomForm() {
+  const history = useNavigate();
   const [newRoom, setRoom] = useState({
     room_id: 0,
     room_name: "",
     capacity: 0,
     floor: 0,
   });
-  const history = useNavigate();
 
   const addRoom = (newRoom) => {
     try {

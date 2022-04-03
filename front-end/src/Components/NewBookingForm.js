@@ -7,35 +7,37 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./NewBookingForm.css";
 
-const API = apiURL;
+const API = apiURL();
 
 function NewBookingForm() {
+  const history = useNavigate();
   const { room_id } = useParams();
-  const [newBooking, setnewBooking] = useState({
+  const [newBooking, setBooking] = useState({
+    meeting_id: 0,
+    room_id: 0,
     meeting_name: "",
     start_date: "",
-    start_time: "",
     end_date: "",
+    start_time: "",
     end_time: "",
     attendees: "",
   });
-  const history = useNavigate();
-
   const addBooking = (newBooking) => {
     try {
       axios.post(`${API}/meeting-rooms/${room_id}/bookings`, newBooking).then(
-        () => {
+        (res) => {
+          setBooking(res.data);
           history(`/meeting-rooms/${room_id}/bookings`);
         },
         (error) => console.error(error)
       );
     } catch (error) {
-      console.warn("catch", error);
+      toast.warning("Room cannot be created", { autoClose: false });
     }
   };
 
   const handleChange = (e) => {
-    setnewBooking({ ...newBooking, [e.target.id]: e.target.value });
+    setBooking({ ...newBooking, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -45,9 +47,6 @@ function NewBookingForm() {
 
   //todo: pops up after successful submission
   toast.success("Meeting Successfully Booked", { autoClose: false });
-
-  //todo: pops up after unsuccessful submission
-  // toast.warning("Room cannot be created", { autoClose: false });
 
   return (
     <div className="FormContainer">
