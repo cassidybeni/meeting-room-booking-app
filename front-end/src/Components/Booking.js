@@ -8,10 +8,10 @@ function Booking({ booking }) {
         <h1>{booking.meeting_name}</h1>
       </Link>
       <h2>
-        Start: {booking.start_date} {booking.start_time}
+        Start: {Date(booking.start_date)} {booking.start_time}
       </h2>
       <h2>
-        End: {booking.end_date} {booking.end_time}
+        End: {Date(booking.end_date)} {booking.end_time}
       </h2>
     </div>
   );

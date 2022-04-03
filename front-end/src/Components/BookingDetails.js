@@ -42,10 +42,12 @@ function BookingDetails() {
   return (
     <div>
       <h1>{booking.meeting_name}</h1>
-      <h2>{booking.start_date}</h2>
-      <h2>{booking.start_time}</h2>
-      <h2>{booking.end_date}</h2>
-      <h2>{booking.end_time}</h2>
+      <h2>
+        Start: {Date(booking.start_date)} {booking.start_time}
+      </h2>
+      <h2>
+        End: {Date(booking.end_date)} {booking.end_time}
+      </h2>
       <button onClick={handleDelete}>Cancel Meeting</button>
       <ToastContainer />
     </div>

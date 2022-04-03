@@ -63,7 +63,7 @@ function NewBookingForm() {
         <label>Start Date: </label>
         <input
           id="start_date"
-          type="text"
+          type="date"
           required
           placeholder="Start Date"
           value={newBooking.start_date}
@@ -72,7 +72,7 @@ function NewBookingForm() {
         <label>Start Time: </label>
         <input
           id="start_time"
-          type="text"
+          type="time"
           required
           placeholder="Start Time"
           value={newBooking.start_time}
@@ -81,7 +81,7 @@ function NewBookingForm() {
         <label>End Date: </label>
         <input
           id="end_date"
-          type="text"
+          type="date"
           required
           placeholder="End Date"
           value={newBooking.end_date}
@@ -90,7 +90,7 @@ function NewBookingForm() {
         <label>End Time: </label>
         <input
           id="end_time"
-          type="text"
+          type="time"
           required
           placeholder="End Time"
           value={newBooking.end_time}
