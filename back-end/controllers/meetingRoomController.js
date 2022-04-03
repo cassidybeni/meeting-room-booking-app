@@ -1,10 +1,12 @@
 const express = require("express");
+const res = require("express/lib/response");
 const rooms = express.Router();
 const {
   getAllRooms,
   getOneRoom,
   createRoom,
   getBookings,
+  createBooking,
 } = require("../queries/meetingRooms.js");
 
 rooms.get("/", async (req, res) => {
@@ -44,6 +46,15 @@ rooms.get("/:room_id/bookings", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: error });
+  }
+});
+
+rooms.post("/:room_id/bookings", async (req, res) => {
+  const newBooking = await createBooking(req.body);
+  if (newBooking) {
+    res.status(200).json(newBooking);
+  } else {
+    res.status(400).json({ error: error });
   }
 });
 

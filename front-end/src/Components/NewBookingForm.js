@@ -22,17 +22,18 @@ function NewBookingForm() {
     end_time: "",
     attendees: "",
   });
+
   const addBooking = (newBooking) => {
     try {
       axios.post(`${API}/meeting-rooms/${room_id}/bookings`, newBooking).then(
         (res) => {
           setBooking(res.data);
-          history(`/meeting-rooms/${room_id}/bookings`);
+          history(`/meeting-rooms/${room_id}`);
         },
         (error) => console.error(error)
       );
     } catch (error) {
-      toast.warning("Room cannot be created", { autoClose: false });
+      toast.warning("Meeting cannot be created", { autoClose: false });
     }
   };
 

@@ -49,9 +49,31 @@ const getBookings = async (room_id) => {
   }
 };
 
+const createBooking = async (room_id) => {
+  try {
+    const newBooking = await db.one(
+      "INSERT INTO bookings (meeting_id, meeting_name, start_date, end_date, start_time, end_time, attendees) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [
+        booking.meeting_id,
+        booking.meeting_name,
+        booking.start_date,
+        booking.end_date,
+        booking.start_time,
+        booking.end_time,
+        booking.attendees,
+        room_id,
+      ]
+    );
+    return newBooking;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllRooms,
   getOneRoom,
   createRoom,
   getBookings,
+  createBooking,
 };
